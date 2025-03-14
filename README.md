@@ -6,7 +6,7 @@ This is a simple full-stack application using **Node.js, Express.js, and React.j
 ## 🚀 Tech Stack
 - **Backend**: Node.js, Express.js
 - **Frontend**: React.js
-- **Database**: In-memory (no DB required)
+- **Database**: In-memory (No Database Required.)
 - **Testing**: Jest (Unit), Cypress (E2E)
 - **CI/CD**: GitHub Actions
 - **Linting & Formatting**: ESLint, Prettier
