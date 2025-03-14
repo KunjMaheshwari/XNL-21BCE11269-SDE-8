@@ -25,7 +25,6 @@ jobs:
           cd frontend
           npm install
 
-      # Start the frontend server only if "start" script exists
       - name: Start Frontend Server
         run: |
           cd frontend
@@ -33,12 +32,12 @@ jobs:
         env:
           CI: true
 
-      # Wait for the frontend server
+      # Wait for the frontend server on port 5173 (Vite default)
       - name: Wait for Frontend to be Ready
         run: |
-          timeout 30s bash -c 'until curl -sSf http://localhost:3000 >/dev/null; do sleep 2; done'
+          timeout 30s bash -c 'until curl -sSf http://localhost:5173 >/dev/null; do sleep 2; done'
 
-      # Run Cypress tests
+      # Run frontend tests
       - name: Run frontend tests
         run: |
           cd frontend
