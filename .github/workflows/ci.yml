@@ -7,19 +7,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      # Backend setup
       - name: Install backend dependencies
         run: |
           cd backend
           npm install
+
       - name: Run backend tests
         run: |
           cd backend
           npm test
+
+      # Frontend setup
       - name: Install frontend dependencies
         run: |
           cd frontend
           npm install
+
+      # Start frontend server in the background
+      - name: Start Frontend Server
+        run: |
+          cd frontend
+          npm start &
+        env:
+          CI: true
+
+      # Wait for the frontend server to be ready
+      - name: Wait for Frontend to be Ready
+        run: |
+          timeout 30s bash -c 'until curl -sSf http://localhost:3000 >/dev/null; do sleep 2; done'
+
+      # Run Cypress tests
       - name: Run frontend tests
         run: |
-            cd frontend
-            npm run test:e2e
+          cd frontend
+          npm run test:e2e
