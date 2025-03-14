@@ -10,7 +10,7 @@ const addUser = (req, res) => {
 };
 const deleteUser = (req, res) => {
   const userId = parseInt(req.params.id);
-  users = users.filter(user => user.id !== userId);
+  users = users.filter((user) => user.id !== userId);
   res.status(200).json({ message: "User deleted successfully" });
 };
 
