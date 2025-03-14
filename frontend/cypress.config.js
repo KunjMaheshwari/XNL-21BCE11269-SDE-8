@@ -1,7 +1,8 @@
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  e2e: {
-    baseUrl: 'http://localhost:5173', // Update the port if needed
-  },
-});
+    e2e: {
+      supportFile: false, // Disables support file
+      baseUrl: 'http://localhost:5173', // Update if necessary
+    },
+  });
